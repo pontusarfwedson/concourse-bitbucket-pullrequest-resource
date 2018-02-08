@@ -1,6 +1,6 @@
 FROM golang:1.9.2-alpine3.6 as builder
 
-WORKDIR /go/src/github.com/pickledrick/concourse-bitbucket-pullrequest-resource/
+WORKDIR /go/src/github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/
 
 RUN apk add --no-cache make git curl
 
@@ -22,8 +22,8 @@ RUN apk add --no-cache \
         rm -rf /var/cache/apk/*
 
 
-COPY --from=builder /go/src/github.com/pickledrick/concourse-bitbucket-pullrequest-resource/cmd/check/check .
-COPY --from=builder /go/src/github.com/pickledrick/concourse-bitbucket-pullrequest-resource/cmd/in/in .
-COPY --from=builder /go/src/github.com/pickledrick/concourse-bitbucket-pullrequest-resource/cmd/out/out .
+COPY --from=builder /go/src/github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/check/check .
+COPY --from=builder /go/src/github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/in/in .
+COPY --from=builder /go/src/github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/out/out .
 
 
