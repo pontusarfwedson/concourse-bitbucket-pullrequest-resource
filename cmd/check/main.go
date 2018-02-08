@@ -26,6 +26,7 @@ func main() {
 	inStr, _ := reader.ReadString(byte('\n'))
 	err := logging.PrintText(fmt.Sprintf(">>>>>>>>>>    os.Stdin is: %s", inStr), whoami)
 	check(err)
+	os.Stdin.Close()
 
 	err = json.Unmarshal([]byte(inStr), &request)
 	check(err)
@@ -36,8 +37,6 @@ func main() {
 	err = logging.PrintText("Unmarshalled struct into", whoami)
 	check(err)
 	err = logging.PrintStruct(request, whoami)
-	check(err)
-
 	check(err)
 
 	token, err := bitbucket.RequestToken(request.Source.Key, request.Source.Secret)
