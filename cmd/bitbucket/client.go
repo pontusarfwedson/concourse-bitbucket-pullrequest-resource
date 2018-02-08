@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/pickledrick/concourse-bitbucket-pullrequest-resource/cmd/models"
 	"github.com/pkg/errors"
+	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/models"
 	"github.com/sethgrid/pester"
 )
 

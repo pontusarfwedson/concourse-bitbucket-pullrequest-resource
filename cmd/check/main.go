@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/pickledrick/concourse-bitbucket-pullrequest-resource/cmd/bitbucket"
-	"github.com/pickledrick/concourse-bitbucket-pullrequest-resource/cmd/models"
+	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/bitbucket"
+	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/models"
 )
 
 func main() {

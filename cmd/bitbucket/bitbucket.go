@@ -10,7 +10,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/pickledrick/concourse-bitbucket-pullrequest-resource/cmd/models"
+	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/models"
 )
 
 // SetBuildStatus updates the commit associated with a pull-request and sets the state () as well as a link to the Concourse build log.

@@ -11,8 +11,8 @@ import (
 	git "gopkg.in/src-d/go-git.v4"
 	"gopkg.in/src-d/go-git.v4/plumbing"
 
-	"github.com/pickledrick/concourse-bitbucket-pullrequest-resource/cmd/bitbucket"
-	"github.com/pickledrick/concourse-bitbucket-pullrequest-resource/cmd/models"
+	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/bitbucket"
+	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/models"
 )
 
 func main() {
