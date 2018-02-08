@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -22,18 +21,9 @@ func main() {
 	var response models.CheckResponse
 	var request models.CheckRequest
 
-	reader := bufio.NewReader(os.Stdin)
-	inStr, _ := reader.ReadString(byte('\n'))
-	err := logging.PrintText(fmt.Sprintf(">>>>>>>>>>    os.Stdin is: %s", inStr), whoami)
+	err := json.NewDecoder(os.Stdin).Decode(&request)
 	check(err)
-	os.Stdin.Close()
 
-	err = json.Unmarshal([]byte(inStr), &request)
-	check(err)
-	if err != nil {
-		err = logging.PrintText(fmt.Sprintf("Could not unmarshal string: %s", err.Error()), whoami)
-		check(err)
-	}
 	err = logging.PrintText("Unmarshalled struct into", whoami)
 	check(err)
 	err = logging.PrintStruct(request, whoami)
