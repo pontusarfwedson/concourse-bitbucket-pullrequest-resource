@@ -53,7 +53,7 @@ func SetBuildStatus(url, token, version, team, repo, commit, state, concourseHos
 
 	key := "concourse-" + buildJob
 	if len(key) >= 43 {
-		key = key[0:42]
+		key = key[0:40]
 	}
 
 	status := models.OutStatus{State: state, Key: key, URL: concourseURL}
