@@ -12,7 +12,12 @@ import (
 	"gopkg.in/src-d/go-git.v4/plumbing"
 
 	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/bitbucket"
+	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/logging"
 	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/models"
+)
+
+const (
+	whoami logging.ResourceModule = logging.In
 )
 
 func main() {

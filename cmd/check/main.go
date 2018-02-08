@@ -1,20 +1,43 @@
 package main
 
 import (
+	"bufio"
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 	"strconv"
 	"strings"
 
 	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/bitbucket"
+	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/logging"
 	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/models"
+)
+
+const (
+	whoami logging.ResourceModule = logging.Check
 )
 
 func main() {
 	var response models.CheckResponse
 	var request models.CheckRequest
-	err := json.NewDecoder(os.Stdin).Decode(&request)
+
+	reader := bufio.NewReader(os.Stdin)
+	inStr, _ := reader.ReadString(byte('\n'))
+	err := logging.PrintText(fmt.Sprintf(">>>>>>>>>>    os.Stdin is: %s", inStr), whoami)
+	check(err)
+
+	err = json.Unmarshal([]byte(inStr), &request)
+	check(err)
+	if err != nil {
+		err = logging.PrintText(fmt.Sprintf("Could not unmarshal string: %s", err.Error()), whoami)
+		check(err)
+	}
+	err = logging.PrintText("Unmarshalled struct into", whoami)
+	check(err)
+	err = logging.PrintStruct(request, whoami)
+	check(err)
+
 	check(err)
 
 	token, err := bitbucket.RequestToken(request.Source.Key, request.Source.Secret)
@@ -75,8 +98,13 @@ func main() {
 		}
 		break
 	}
-	err = json.NewEncoder(os.Stdout).Encode(response)
+
+	b, _ := json.Marshal(response)
+	jsonStr := string(b)
+	err = logging.PrintText(fmt.Sprintf(">>>>>>>>>>     Output to os.Stdout is %s", jsonStr), whoami)
 	check(err)
+	fmt.Fprintf(os.Stdout, jsonStr)
+
 }
 
 func check(err error) {

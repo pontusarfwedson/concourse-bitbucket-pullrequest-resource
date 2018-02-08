@@ -8,7 +8,12 @@ import (
 	"strings"
 
 	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/bitbucket"
+	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/logging"
 	"github.com/pontusarfwedson/concourse-bitbucket-pullrequest-resource/cmd/models"
+)
+
+const (
+	whoami logging.ResourceModule = logging.Out
 )
 
 func main() {
