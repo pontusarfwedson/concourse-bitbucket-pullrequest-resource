@@ -1,3 +1,5 @@
+**`This repo has been forked from [pickledrick/concourse-bitbucket-pullrequest-resource](http://www.github.com/pickledrick/concourse-bitbucket-pullrequest-resource)`**
+
 A [Concourse](http://concourse.ci/) [resource](http://concourse.ci/resources.html) to interact with the build status API of [Atlassian BitBucket](https://bitbucket.org).
 
 This repo is tied to the [associated Docker image](quay.io/pickledrick/concourse-bitbucket-pullrequest-resource) on quay.io, built from the master branch.
@@ -36,6 +38,8 @@ Parameters:
  * **`commit`** - File containing commit SHA to be updated.
  * **`state`** - the state of the status. Must be one of `success` or `failed`.
 
+## Reading logs
+The logs can be found by running `fly -t <target-name> intercept -c <pipeline-name>/<resource-name>` and then looking for `check_logfile.txt`, `in_logfile.txt` and `out_logfile.txt` in the `~/root/` directory.
 
 ## Example
 
