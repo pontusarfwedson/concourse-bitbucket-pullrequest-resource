@@ -1,4 +1,4 @@
-**`This repo has been forked from [pickledrick/concourse-bitbucket-pullrequest-resource](http://www.github.com/pickledrick/concourse-bitbucket-pullrequest-resource)`**
+This repo has been forked from [pickledrick/concourse-bitbucket-pullrequest-resource](http://www.github.com/pickledrick/concourse-bitbucket-pullrequest-resource)
 
 A [Concourse](http://concourse.ci/) [resource](http://concourse.ci/resources.html) to interact with the build status API of [Atlassian BitBucket](https://bitbucket.org).
 
