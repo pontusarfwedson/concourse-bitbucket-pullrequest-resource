@@ -54,6 +54,7 @@ func main() {
 					possibleCommand := strings.Split(comment.Content.Raw, "\n")[0]
 					if possibleCommand == "/retest" {
 						runRetest = true
+						link = comment.Link
 					}
 				}
 			}
