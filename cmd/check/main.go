@@ -44,6 +44,7 @@ func main() {
 
 			link := pr.Links.HTML.Href
 
+			runRetest := false
 			if pr.CommentCount > 0 {
 				comments, err := bitbucket.GetPrComments(pr.Links.Comments.Href, token)
 				check(err)
@@ -51,12 +52,8 @@ func main() {
 				for _, comment := range comments {
 
 					possibleCommand := strings.Split(comment.Content.Raw, "\n")[0]
-
-					// If the first line of the comment is "/retest", then include this link
-					// in the output, instead of the default PR link. This should trigger
-					// a new build.
 					if possibleCommand == "/retest" {
-						link = comment.Link
+						runRetest = true
 					}
 				}
 			}
@@ -67,21 +64,9 @@ func main() {
 				Link:        link,
 			}
 
-			switch state {
-			case "SUCCESSFUL":
-				//response = append(response, responseOut)
-			case "INPROGRESS":
-				//response = append(response, responseOut)
-			case "FAILING", "FAILED":
-				//response = append(response, responseOut)
-				counter++
-			case "STOPPED":
-				//response = append(response, responseOut)
-				counter++
-			case "none":
+			//Only send this version to the output if has no status (no build has been started) or retest has been initialized!
+			if state == "none" || runRetest {
 				response = append(response, responseOut)
-				counter++
-			default:
 				counter++
 			}
 		}
