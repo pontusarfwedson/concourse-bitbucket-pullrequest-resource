@@ -23,8 +23,8 @@ func main() {
 
 	err := json.NewDecoder(os.Stdin).Decode(&request)
 	check(err)
-
 	err = logging.PrintText("Unmarshalled struct into", whoami)
+
 	check(err)
 	err = logging.PrintStruct(request, whoami)
 	check(err)
@@ -69,19 +69,25 @@ func main() {
 
 			switch state {
 			case "SUCCESSFUL":
-				response = append(response, responseOut)
+				fmt.Println("SUCCESSFUL" + responseOut.PullRequest)
+				//response = append(response, responseOut)
 			case "INPROGRESS":
-				response = append(response, responseOut)
+				fmt.Println("INPROGRESS" + responseOut.PullRequest)
+				//response = append(response, responseOut)
 			case "FAILING", "FAILED":
-				response = append(response, responseOut)
+				fmt.Println("FAILED" + responseOut.PullRequest)
+				//response = append(response, responseOut)
 				counter++
 			case "STOPPED":
-				response = append(response, responseOut)
+				fmt.Println("STOPPED" + responseOut.PullRequest)
+				//response = append(response, responseOut)
 				counter++
 			case "none":
+				fmt.Println("none" + responseOut.PullRequest)
 				response = append(response, responseOut)
 				counter++
 			default:
+				fmt.Println("default" + responseOut.PullRequest)
 				counter++
 			}
 		}
