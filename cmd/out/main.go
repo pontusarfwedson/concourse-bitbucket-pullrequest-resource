@@ -43,6 +43,10 @@ func main() {
 		err = bitbucket.SetBuildStatus(request.Source.URL, token, request.Source.APIVersion, request.Source.Team, request.Source.Repo, UpdateCommit, "FAILED", request.Source.ConcourseURL)
 		check(err)
 		log.Print(UpdateCommit)
+	case "inprogress":
+		err = bitbucket.SetBuildStatus(request.Source.URL, token, request.Source.APIVersion, request.Source.Team, request.Source.Repo, UpdateCommit, "INPROGRESS", request.Source.ConcourseURL)
+		check(err)
+		log.Print(UpdateCommit)
 	default:
 		log.Fatal("No Status Set")
 	}
