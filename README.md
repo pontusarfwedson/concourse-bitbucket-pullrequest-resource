@@ -36,7 +36,7 @@ Update the status of a commit.
 Parameters:
 
  * **`commit`** - File containing commit SHA to be updated.
- * **`state`** - the state of the status. Must be one of `success` or `failed`.
+ * **`state`** - the state of the status. Must be one of `success`, `failed` or `inprogress`. By using `inprogress` we can use this resource purely as an `put` in order to update status of a bitbucket commit, e.g. when we have multiple consecutive jobs where only the last one should set the status to `success` but a success of a intermediary one should set it to `inprogress` while any fail should set it to `failed`.
 
 ## Reading logs
 The logs can be found by running `fly -t <target-name> intercept -c <pipeline-name>/<resource-name>` and then looking for `check_logfile.txt`, `in_logfile.txt` and `out_logfile.txt` in the `~/root/` directory.
