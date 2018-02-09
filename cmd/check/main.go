@@ -69,25 +69,19 @@ func main() {
 
 			switch state {
 			case "SUCCESSFUL":
-				fmt.Println("SUCCESSFUL" + responseOut.PullRequest)
 				//response = append(response, responseOut)
 			case "INPROGRESS":
-				fmt.Println("INPROGRESS" + responseOut.PullRequest)
 				//response = append(response, responseOut)
 			case "FAILING", "FAILED":
-				fmt.Println("FAILED" + responseOut.PullRequest)
 				//response = append(response, responseOut)
 				counter++
 			case "STOPPED":
-				fmt.Println("STOPPED" + responseOut.PullRequest)
 				//response = append(response, responseOut)
 				counter++
 			case "none":
-				fmt.Println("none" + responseOut.PullRequest)
 				response = append(response, responseOut)
 				counter++
 			default:
-				fmt.Println("default" + responseOut.PullRequest)
 				counter++
 			}
 		}
