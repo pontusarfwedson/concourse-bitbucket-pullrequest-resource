@@ -59,7 +59,7 @@ To install on all Concourse workers, update your deployment manifest properties 
     properties:
       groundcrew:
         additional_resource_types:
-          - image: "docker:///quay.io/pickledrick/concourse-bitbucket-pullrequest-resource#master"
+          - image: "docker:///quay.io/pontusarfwedson/concourse-bitbucket-pullrequest-resource#latest"
             type: "pull-request"                   
 
 ### Pipeline-specific
@@ -70,8 +70,8 @@ To use on a single pipeline, update your pipeline to include a new `resource_typ
       - name: "pull-request"
         type: "docker-image"
         source:
-          repository: "quay.io/pickledrick/concourse-bitbucket-pullrequest-resource"
-          tag: "master"
+          repository: "quay.io/pontusarfwedson/concourse-bitbucket-pullrequest-resource"
+          tag: "latest"
 
 
 ## References
