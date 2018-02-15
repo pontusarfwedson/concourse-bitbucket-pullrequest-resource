@@ -2,7 +2,7 @@ This repo has been forked from [pickledrick/concourse-bitbucket-pullrequest-reso
 
 A [Concourse](http://concourse.ci/) [resource](http://concourse.ci/resources.html) to interact with the build status API of [Atlassian BitBucket](https://bitbucket.org).
 
-This repo is tied to the [associated Docker image](quay.io/pickledrick/concourse-bitbucket-pullrequest-resource) on quay.io, built from the master branch.
+This repo is tied to the [associated Docker image](quay.io/pontusarfwedson/concourse-bitbucket-pullrequest-resource) on quay.io, built from the master branch.
 ## Resource Configuration
 
 
@@ -37,7 +37,7 @@ Parameters:
 
  * **`commit`** - File containing commit SHA to be updated.
  * **`state`** - the state of the status. Must be one of `success`, `failed` or `inprogress`. By using `inprogress` we can use this resource purely as an `put` in order to update status of a bitbucket commit. Make sure to, if you put `inprogress` for a task, then also do `success` with the same task. Otherwise, bitbucket will consider them two different builds (so the `inprogress` one will never succeed).
- 
+
 ## Reading logs
 The logs can be found by running `fly -t <target-name> intercept -c <pipeline-name>/<resource-name>` and then looking for `check_logfile.txt`, `in_logfile.txt` and `out_logfile.txt` in the `~/root/` directory.
 
